@@ -1,0 +1,2 @@
+// TypeScript interfaces and DTOs mirroring the backend API contracts
+export {}

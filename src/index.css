@@ -1,0 +1,768 @@
+/* =========================================================
+   GiderTakip — Premium SaaS Design System v2
+   Theme: Deep Dark · Brushed Brass · Professional
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import "tailwindcss";
+
+/* ---------------------------------------------------------
+   Design Tokens
+   --------------------------------------------------------- */
+:root {
+  /* ── Depth Palette ── */
+  --color-void: #05070A;
+  /* deepest background — true black */
+  --color-abyss: #080B0F;
+  /* app shell bg */
+  --color-obsidian: #0E1116;
+  /* primary card surface */
+  --color-graphite: #161A21;
+  /* elevated surface / nav */
+  --color-iron: #1E232C;
+  /* input / control bg */
+  --color-steel: #252C38;
+  /* hover state */
+  --color-flint: #323A48;
+  /* borders / dividers */
+  --color-slate: #404959;
+  /* secondary borders */
+
+  /* ── Text Hierarchy ── */
+  --color-text-primary: #EAE6DE;
+  /* warm off-white */
+  --color-text-secondary: #9A9590;
+  /* silver-grey */
+  --color-text-tertiary: #545250;
+  /* muted/disabled */
+  --color-text-inverse: #05070A;
+  /* text on brass bg */
+
+  /* ── Brushed Brass Accent ── */
+  --color-accent: #C4973A;
+  /* primary brass */
+  --color-accent-bright: #D4A84A;
+  /* hover / highlight */
+  --color-accent-dim: #8C6A28;
+  /* muted brass */
+  --color-accent-subtle: #1E1A10;
+  /* brass ghost bg */
+  --color-accent-glow: rgba(196, 151, 58, 0.12);
+
+  /* ── Semantic — Forest Green (positive) ── */
+  --color-success: #1D4D35;
+  --color-success-text: #5DB88A;
+  /* emerald green text */
+  --color-success-subtle: #0E2119;
+
+  /* ── Semantic — Crimson (negative) ── */
+  --color-danger: #4D1D1D;
+  --color-danger-text: #C06060;
+  /* muted crimson */
+  --color-danger-subtle: #210E0E;
+
+  /* ── Semantic — Info / Warning ── */
+  --color-info-text: #6A9EC4;
+  --color-warning-text: #C4973A;
+
+  /* ── Borders ── */
+  --border-subtle: rgba(196, 151, 58, 0.07);
+  --border-default: rgba(196, 151, 58, 0.13);
+  --border-strong: rgba(196, 151, 58, 0.26);
+  --border-focus: rgba(196, 151, 58, 0.60);
+  --border-panel: rgba(255, 255, 255, 0.04);
+
+  /* ── Typography ── */
+  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* ── Radius ── */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.65);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.80);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.90);
+  --shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.60);
+  --shadow-glow-sm: 0 0 16px rgba(196, 151, 58, 0.10);
+  --shadow-glow-md: 0 0 32px rgba(196, 151, 58, 0.14);
+  --shadow-glow-lg: 0 0 56px rgba(196, 151, 58, 0.10);
+
+  /* ── Brass button gradient ── */
+  --gradient-brass: linear-gradient(160deg, #D4A84A 0%, #C4973A 50%, #B08830 100%);
+  --gradient-brass-hover: linear-gradient(160deg, #DDB855 0%, #CCA040 50%, #B89038 100%);
+
+  /* ── Transitions ── */
+  --transition-fast: 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 380ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------------------------------------------------------
+   Tailwind v4 Theme Extension
+   --------------------------------------------------------- */
+@theme {
+  --color-void: #05070A;
+  --color-abyss: #080B0F;
+  --color-obsidian: #0E1116;
+  --color-graphite: #161A21;
+  --color-iron: #1E232C;
+  --color-steel: #252C38;
+  --color-flint: #323A48;
+
+  --color-text-primary: #EAE6DE;
+  --color-text-secondary: #9A9590;
+  --color-text-tertiary: #545250;
+
+  --color-accent: #C4973A;
+  --color-accent-muted: #8C6A28;
+
+  --font-family-sans: 'Poppins', system-ui, sans-serif;
+  --font-family-serif: 'Playfair Display', Georgia, serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+/* ---------------------------------------------------------
+   Base Reset & Defaults
+   --------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.65;
+  background-color: var(--color-abyss);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------------------------------------
+   Typography
+   --------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.22;
+  color: var(--color-text-primary);
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 1.625rem);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.0625rem;
+}
+
+h6 {
+  font-size: 0.9375rem;
+}
+
+p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-bright);
+}
+
+/* ---------------------------------------------------------
+   Scrollbar (Webkit)
+   --------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-flint);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-dim);
+}
+
+/* ---------------------------------------------------------
+   Selection & Focus
+   --------------------------------------------------------- */
+::selection {
+  background-color: rgba(196, 151, 58, 0.22);
+  color: var(--color-text-primary);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------------------------------------------------
+   Surface & Card System
+   --------------------------------------------------------- */
+
+/* Primary card — obsidian with very subtle metallic border */
+.surface-card {
+  background-color: var(--color-obsidian);
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+/* Elevated surface (dialogs, dropdowns) */
+.surface-elevated {
+  background-color: var(--color-graphite);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Summary card — with top brass accent bar + glow */
+.surface-summary-card {
+  background: linear-gradient(180deg, #10141A 0%, #0E1116 100%);
+  border: 1px solid var(--border-panel);
+  border-top: 2px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-md),
+    var(--shadow-glow-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Interactive card hover */
+.card-interactive {
+  transition: border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.card-interactive:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-glow-md), var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   Utility Classes
+   --------------------------------------------------------- */
+
+/* Brass text gradient */
+.text-brass-gradient {
+  background: linear-gradient(135deg, #DDBA60 0%, #C4973A 45%, #9A7030 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Legacy alias — mirrors .text-brass-gradient */
+.text-accent-gradient {
+  background: linear-gradient(135deg, #DDBA60 0%, #C4973A 45%, #9A7030 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Metallic borders */
+.border-metallic {
+  border: 1px solid var(--border-default);
+}
+
+.border-metallic-strong {
+  border: 1px solid var(--border-strong);
+}
+
+/* Accent badge */
+.badge-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  border: 1px solid rgba(196, 151, 58, 0.18);
+  font-family: var(--font-sans);
+}
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 1.5rem 0;
+}
+
+/* Tabular numbers for amounts */
+.font-mono-amount {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.015em;
+}
+
+/* Pill type badge — Gelir */
+.badge-income {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(93, 184, 138, 0.10);
+  color: var(--color-success-text);
+  border: 1px solid rgba(93, 184, 138, 0.20);
+  font-family: var(--font-sans);
+}
+
+/* Pill type badge — Gider */
+.badge-expense {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(192, 96, 96, 0.10);
+  color: var(--color-danger-text);
+  border: 1px solid rgba(192, 96, 96, 0.20);
+  font-family: var(--font-sans);
+}
+
+/* Category pill */
+.badge-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--border-default);
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   Premium Buttons
+   --------------------------------------------------------- */
+
+/* Brass primary button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5625rem 1.375rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-inverse);
+  background: var(--gradient-brass);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 14px rgba(196, 151, 58, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  transition: box-shadow var(--transition-fast),
+    transform var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+}
+
+.btn-primary:hover {
+  background: var(--gradient-brass-hover);
+  box-shadow:
+    0 6px 20px rgba(196, 151, 58, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(196, 151, 58, 0.25);
+}
+
+/* ---------------------------------------------------------
+   Premium Input Fields
+   --------------------------------------------------------- */
+.input-premium {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-iron);
+  border: 1px solid var(--border-default);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-inset);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  -webkit-appearance: none;
+}
+
+.input-premium::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.input-premium:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-inset), 0 0 0 3px rgba(196, 151, 58, 0.08);
+}
+
+/* ---------------------------------------------------------
+   Keyframe Animations
+   --------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-subtle {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.32s ease both;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 1.8s ease-in-out infinite;
+}
+
+/* Staggered children */
+.stagger>*:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.stagger>*:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.stagger>*:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.stagger>*:nth-child(4) {
+  animation-delay: 160ms;
+}
+
+/* ---------------------------------------------------------
+   Autofill Override
+   --------------------------------------------------------- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 100px var(--color-iron) inset !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  caret-color: var(--color-text-primary);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ---------------------------------------------------------
+   Data Table — Premium Rows
+   --------------------------------------------------------- */
+.data-table-row {
+  transition: background-color var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.data-table-row:hover {
+  background-color: rgba(196, 151, 58, 0.04);
+}
+
+.data-table-row:last-child {
+  border-bottom: none;
+}
+
+/* ---------------------------------------------------------
+   Sidebar Navigation
+   --------------------------------------------------------- */
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.9375rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  color: var(--color-text-secondary);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.sidebar-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.045);
+  color: var(--color-text-primary);
+}
+
+.sidebar-nav-item.active {
+  border-left-color: var(--color-accent);
+  background: linear-gradient(90deg, rgba(196, 151, 58, 0.12) 0%, rgba(196, 151, 58, 0.02) 100%);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   Shadcn Tabs
+   --------------------------------------------------------- */
+[data-slot="tabs-trigger"][data-state="active"] {
+  background-color: var(--color-obsidian);
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+[data-slot="tabs-trigger"]:hover:not([data-state="active"]) {
+  background-color: rgba(255, 255, 255, 0.035);
+  color: var(--color-text-primary);
+}
+
+/* ---------------------------------------------------------
+   Shadcn Dialog overrides
+   --------------------------------------------------------- */
+[data-slot="dialog-overlay"] {
+  background: rgba(3, 5, 8, 0.75) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+/* ---------------------------------------------------------
+   Section label (tiny uppercase heading)
+   --------------------------------------------------------- */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* ---------------------------------------------------------
+   Stat number (large serif for dashboard cards)
+   --------------------------------------------------------- */
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+/* ---------------------------------------------------------
+   Skeleton shimmer
+   --------------------------------------------------------- */
+.skeleton-shimmer {
+  background: linear-gradient(90deg,
+      var(--color-graphite) 25%,
+      var(--color-steel) 50%,
+      var(--color-graphite) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ---------------------------------------------------------
+   Modal entrance animation
+   --------------------------------------------------------- */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.93) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Antigravity Premium Responsive Spacing Overrides ── */
+.main-content-padded {
+  padding: 1rem 1.25rem !important; /* px-5 py-4 on mobile */
+}
+@media (min-width: 768px) {
+  .main-content-padded {
+    padding: 2rem 2.25rem !important; /* px-9 py-8 on desktop */
+  }
+}
+
+.header-padded {
+  padding-left: 1.25rem !important; /* px-5 on mobile */
+  padding-right: 1.25rem !important;
+}
+@media (min-width: 768px) {
+  .header-padded {
+    padding-left: 2.25rem !important; /* px-9 on desktop */
+    padding-right: 2.25rem !important;
+  }
+}
+
+.card-padded {
+  padding: 0.875rem 1.25rem !important; /* p-3.5 px-5 on mobile */
+}
+@media (min-width: 768px) {
+  .card-padded {
+    padding: 1.625rem 1.5rem !important; /* p-6 on desktop */
+  }
+}
+
+.tx-card-padded {
+  padding: 0.875rem 1.25rem !important; /* p-3.5 px-5 on mobile */
+}
+@media (min-width: 768px) {
+  .tx-card-padded {
+    padding: 1.25rem 1.25rem !important; /* p-5 on desktop */
+  }
+}
