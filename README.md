@@ -1,32 +1,30 @@
-# React + TypeScript + Vite
+# 🚀 Yago Code - Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Yago Code, finansal okuryazarlığı artırmak ve kişisel bütçe yönetimini profesyonel bir arayüzle kolaylaştırmak için geliştirilmiş bir **Fintech SaaS** projesidir.
 
-Currently, two official plugins are available:
+## 🛠 Kullanılan Teknolojiler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend:** React, Vite, Tailwind CSS, Recharts
+- **Backend:** C#, .NET 8 (N-Tier Architecture)
+- **Database:** PostgreSQL (via Neon.tech)
+- **Deployment:** Vercel (Frontend), Render (Backend)
 
-## React Compiler
+## ⚡ Özellikler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ✅ **Mobil Uyumlu Dashboard:** Old Money estetiğinde minimalist tasarım.
+- ✅ **Gerçek Zamanlı Analiz:** Grafiksel harcama dağılımı.
+- ✅ **Kullanıcı Yönetimi:** Profil ayarları ve şifre güvenliği.
 
-## Expanding the Oxlint configuration
+## 🚀 Kurulum
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+1. Depoyu klonla:
+   `git clone https://github.com/yagiztkn/-ExpenseTracker.API.Frontend
+.git`
+2. Paketleri yükle:
+   `npm install`
+3. Geliştirme modunda çalıştır:
+   `npm run dev`
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
+*Geliştirici: Yağız Tekin*
+LinkedIn: https://www.linkedin.com/in/yagiztekin-software/
